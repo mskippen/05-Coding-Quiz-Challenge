@@ -60,6 +60,11 @@ var selectedResultBox = document.querySelector(".selected-result");
 var question_text = document.querySelector(".que_text");
 var startPageBox = document.querySelector(".start_btn")
 
+var form = document.querySelector("form");
+var formInput = document.querySelector("form input");
+var scoreBox = document.querySelector(".scoreBox");
+var scoreBoxText = document.querySelector(".score-text");
+var backBtn = document.querySelector(".back-btn");
 
 var timeValue = 15;
 var que_count = 0;
@@ -134,10 +139,12 @@ function selectedOption(answer) {
           }, 1500);
     } else {
         selectedResultBox.innerHTML = "<p> wrong </p>";
+        var newTimer = timer - 15
         setTimeout(function () {
             selectedResultBox.innerHTML = ""; //clear selected option result after 1.5 seconds
-          }, 1500);
-        var newTimer = timer - 15
+        }, 1500);
+        console.log("wrong answer")
+        console.log(newTimer)
         clearInterval(counter)
         startTimer(newTimer)
     }
@@ -174,3 +181,22 @@ function showResult() {
       "</p></span>";
     scoreText.innerHTML = scoreTag;
 }
+
+form.addEventListener("submit", submitScore)
+
+function submitScore(event) {
+    event.preventDefault()
+    localStorage.setItem("highScore", formInput.value + " - " + userScore);
+    result_box.classList.remove("activeResult"); //hide result box
+    quiz_box.classList.remove("activeQuiz"); //hide quiz box
+    start_btn.parentElement.classList.add("hide"); //hide start button
+    scoreBox.classList.add("activeBox");
+    scoreBoxText.innerHTML += `<p><strong>${localStorage.getItem(
+        "highScore"
+      )}<strong> </p>`;
+      backBtn.classList.remove("hide");
+}
+
+backBtn.addEventListener("click", function() {
+    window.location.reload()
+})
