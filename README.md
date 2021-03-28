@@ -22,6 +22,6 @@ CSS,
 JAVASCRIPT.
 
 ## Live URL
-https:
+https://mskippen.github.io/05-Coding-Quiz-Challenge/
 
 © 2021 Megan Skippen
