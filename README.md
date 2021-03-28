@@ -17,9 +17,9 @@ They will then be taken back to the start.
 
 Files have been setup as:
 
-HTML,
-CSS,
-JAVASCRIPT.
+HTML, index.html
+CSS, style.css
+JAVASCRIPT. script.js
 
 ## Live URL
 https://mskippen.github.io/05-Coding-Quiz-Challenge/
